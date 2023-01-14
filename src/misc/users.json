@@ -1,0 +1,12 @@
+[
+  {
+    "firstName": "Nikita",
+    "lastName": "Korovin",
+    "email": "123@mail.ru",
+    "country": "Uganda",
+    "dob": "1998-12-12",
+    "phone": "123123123",
+    "password": "2411",
+    "agreed": true
+  }
+]
