@@ -3,6 +3,13 @@
 This is a React project that is used to build modern web applications. It includes the following features:
 
 ## Technologies used
+- React
+- Redux
+- React-Bootstrap
+- Webpack
+- Babel
+
+## Implemented features 
 - View products
 - View premium products
 - Login or register as premium user
