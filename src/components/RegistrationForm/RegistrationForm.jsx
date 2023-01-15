@@ -14,6 +14,7 @@ import FirstNameField from '../RegisterFormComponents/FirstNameField';
 import LastNameField from '../RegisterFormComponents/LastNameField';
 import { setAllErrorsTrue } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import { useMemo } from 'react';
 const RegistrationForm = () => {
   const [registrationData, setRegistrationData] = useState({
     firstName: '',
@@ -55,8 +56,7 @@ const RegistrationForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setRegistrationData((prev) => ({
       ...prev,
       id: Math.random().toString(),
@@ -76,6 +76,28 @@ const RegistrationForm = () => {
     navigate('/premium');
     setAllErrorsTrue(dispatch);
   };
+
+  const isFormValid = useMemo(
+    () =>
+      !(
+        emailError ||
+        lastNameError ||
+        firstNameError ||
+        passwordError ||
+        dobError ||
+        phoneError ||
+        !agreed
+      ),
+    [
+      emailError,
+      lastNameError,
+      firstNameError,
+      passwordError,
+      dobError,
+      phoneError,
+      agreed,
+    ]
+  );
 
   return (
     <Container>
@@ -100,15 +122,7 @@ const RegistrationForm = () => {
           />
         </Form.Group>
         <Button
-          disabled={
-            emailError ||
-            firstNameError ||
-            lastNameError ||
-            passwordError ||
-            dobError ||
-            phoneError ||
-            !agreed
-          }
+          disabled={!isFormValid}
           onClick={handleSubmit}
           variant="primary"
           type="submit">

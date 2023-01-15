@@ -3,27 +3,20 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ItemCard from '../ItemCard/ItemCard';
-const products = require('../../misc/products.json');
-const ItemCards = () => {
+const ItemCards = ({ items }) => {
+  console.log(items);
+  const products = items.map(({ title, description, img, id }) => {
+    return (
+      <Col key={id} xs={4}>
+        <ItemCard title={title} description={description} img={img} id={id} />
+      </Col>
+    );
+  });
   return (
-    <Container>
-      <Row>
-        {products.map(({ title, description, img, id }) => {
-          return (
-            <Col key={id} xs={4}>
-              <ItemCard
-                title={title}
-                description={description}
-                img={img}
-                key={id}
-                id={id}
-              />
-            </Col>
-          );
-        })}
-      </Row>
+    <Container className="mt-5">
+      <Row>{products}</Row>
     </Container>
   );
 };
 
-export default ItemCards;
+export default React.memo(ItemCards);

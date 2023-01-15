@@ -33,13 +33,12 @@ const LoginForm = () => {
   };
 
   const validateCredentials = () => {
-    const user = users.filter((user) => user.email === email);
-
-    if (user.length === 0) {
+    const user = users.find((user) => user.email === email);
+    if (!user) {
       setError(true);
     } else {
-      user[0].password === password
-        ? handleSuccessLogin(dispatch, user[0])
+      user.password === password
+        ? handleSuccessLogin(dispatch, user)
         : setError(true);
     }
   };

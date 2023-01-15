@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import { updateUserById } from '../../misc/updateUserData';
 import useValidation from '../../hooks/useValidation';
+import { updateField } from '../../redux/actions';
+import usePatternError from '../../hooks/usePatternError';
+import { passwordPattern } from '../../misc/patterns';
 const EditFormField = ({ field, value, userId, minLength, label }) => {
   const users = require('../../misc/users.json');
   const [editMode, setEditMode] = useState(false);
@@ -12,6 +15,7 @@ const EditFormField = ({ field, value, userId, minLength, label }) => {
     isEmpty: false,
     minLength: minLength,
   });
+  const isPatternError = usePatternError(passwordPattern, fieldValue);
 
   const handleEdit = () => {
     setEditMode(true);
@@ -20,7 +24,7 @@ const EditFormField = ({ field, value, userId, minLength, label }) => {
   const handleSave = () => {
     setEditMode(false);
     updateUserById(userId, field, fieldValue, users);
-    dispatch({ type: 'UPDATE_FIELD', payload: { field, value: fieldValue } });
+    updateField(dispatch, { field, value: fieldValue });
   };
 
   const handleChange = (e) => {
@@ -35,7 +39,11 @@ const EditFormField = ({ field, value, userId, minLength, label }) => {
         disabled={!editMode}
       />
       <Button
-        disabled={fieldValue.length === 0 || minLengthError}
+        disabled={
+          fieldValue.length === 0 ||
+          minLengthError ||
+          (field === 'password' && isPatternError)
+        }
         onClick={editMode ? handleSave : handleEdit}>
         {editMode ? `Save ${label}` : `Edit ${label}`}
       </Button>

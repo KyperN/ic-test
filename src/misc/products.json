@@ -41,21 +41,42 @@
     "id": "6"
   },
   {
-    "title": "Product 6",
+    "title": "premium",
     "description": "Lorem ipsum dolor sit amet",
     "price": "99",
     "id": "7"
   },
   {
-    "title": "Product 6",
+    "title": "premium",
     "description": "Lorem ipsum dolor sit amet",
     "price": "99",
     "id": "8"
   },
   {
-    "title": "Product 6",
+    "title": "P r o d",
     "description": "Lorem ipsum dolor sit amet",
     "price": "99",
     "id": "9"
+  },
+  {
+    "title": "Product premium",
+    "description": "Lorem ipsum dolor sit amet",
+    "price": "99",
+    "id": "7",
+    "premium": true
+  },
+  {
+    "title": "Product premium",
+    "description": "Lorem ipsum dolor sit amet",
+    "price": "99",
+    "id": "8",
+    "premium": true
+  },
+  {
+    "title": "Product premium",
+    "description": "Lorem ipsum dolor sit amet",
+    "price": "99",
+    "id": "9",
+    "premium": true
   }
 ]

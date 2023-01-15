@@ -22,11 +22,9 @@ export const formErrorReducer = (state = init, action) => {
       return { ...state, dobError: action.payload };
     }
     case 'PHONE_ERROR': {
-      console.log(state);
       return { ...state, phoneError: action.payload };
     }
     case 'RESET_ERRORS': {
-      console.log(state);
       return { ...state, init };
     }
     default:

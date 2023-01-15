@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isAuth = useSelector((state) => state.user.isAuth);
@@ -15,7 +14,7 @@ const NavBar = () => {
       <Navbar.Toggle onClick={() => setIsOpen(!isOpen)} />
       <Navbar.Collapse isOpen={isOpen}>
         <Nav className="mr-auto">
-          <NavItem href="/prem">
+          <NavItem>
             <Nav.Link as={Link} to={`${isAuth ? '/premium' : '/login'}`}>
               Premium
             </Nav.Link>
@@ -30,13 +29,11 @@ const NavBar = () => {
               Contact
             </Nav.Link>
           </NavItem>
-          {isAuth ? (
-            <NavItem>
-              <Nav.Link as={Link} to="/profile">
-                Profile
-              </Nav.Link>
-            </NavItem>
-          ) : null}
+          {isAuth && (
+            <Nav.Link as={Link} to="/profile">
+              Profile
+            </Nav.Link>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

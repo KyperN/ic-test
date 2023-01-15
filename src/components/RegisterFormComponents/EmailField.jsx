@@ -5,7 +5,7 @@ import { isValid } from '../../misc/isValid';
 import { emailPattern } from '../../misc/patterns';
 import { useDispatch } from 'react-redux';
 import { setEmailError } from '../../redux/actions';
-import usePatternError from '../../hooks/usePatterError';
+import usePatternError from '../../hooks/usePatternError';
 const EmailField = ({
   email,
   handleUserInput,

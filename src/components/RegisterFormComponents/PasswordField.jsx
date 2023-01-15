@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form } from 'react-bootstrap';
 import { isValid } from '../../misc/isValid';
 import useValidation from '../../hooks/useValidation';
@@ -6,7 +6,7 @@ import { passwordPattern } from '../../misc/patterns';
 import { useEffect } from 'react';
 import { setPasswordError } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
-import usePatternError from '../../hooks/usePatterError';
+import usePatternError from '../../hooks/usePatternError';
 const PasswordField = ({
   password,
   handleUserInput,

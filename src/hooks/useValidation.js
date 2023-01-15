@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const useValidation = (value, validations, pattern) => {
+const useValidation = (value, validations) => {
   const [isEmpty, setIsEmpty] = useState(true);
   const [minLengthError, setMinLengthError] = useState(false);
 

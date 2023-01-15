@@ -9,7 +9,7 @@ const CountryAndPhoneField = ({ handlePhoneCountry }) => {
   const [error, setError] = useState(true);
   const dispatch = useDispatch();
   const handleChange = (phone, country) => {
-    phone.length > 8 ? setError(false) : setError(true);
+    setError(phone.length <= 8);
     handlePhoneCountry(phone, country);
   };
   useEffect(() => {
@@ -25,7 +25,7 @@ const CountryAndPhoneField = ({ handlePhoneCountry }) => {
         country={'us'}
         onChange={(phone, country) => handleChange(phone, country.name)}
       />
-      {error ? <FormError text={'Invalid phone'} /> : null}
+      {error && <FormError text={'Invalid phone'} />}
     </>
   );
 };

@@ -6,16 +6,23 @@ import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import LoginForm from '../LoginForm/LoginForm';
 import PremiumSection from '../PremiumSection/PremiumSection';
 import Profile from '../Profile/Profile';
+import Contact from '../Contact/Contact';
+import Services from '../Services/Services';
 const AppRouter = ({ isAuth, user }) => {
+  const products = require('../../misc/products.json');
+  const regularProducts = products.filter((product) => !product.premium);
   const paths = [
     {
       path: '/home',
-      element: <ItemCards />,
+      element: <ItemCards items={regularProducts} />,
     },
+    { path: '/services', element: <Services /> },
+    { path: '/contact', element: <Contact /> },
+    { path: '/' },
     { path: 'product/:id', element: <ItemInfo /> },
     { path: '/register', element: <RegistrationForm /> },
     {
-      path: 'premium',
+      path: '/premium',
       element: isAuth ? <PremiumSection /> : <LoginForm />,
     },
     {

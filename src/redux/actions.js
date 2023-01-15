@@ -44,3 +44,9 @@ export const handleSuccessLogin = (dispatch, value) => {
     payload: value,
   });
 };
+export const updateField = (dispatch, value) => {
+  dispatch({ type: 'UPDATE_FIELD', payload: value });
+};
+export const handleLogOut = (dispatch) => {
+  dispatch({ type: 'LOGOUT' });
+};

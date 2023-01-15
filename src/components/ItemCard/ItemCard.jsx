@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 const ItemCard = ({ title, description, id, premium = false }) => {
   return (

@@ -4,6 +4,7 @@ import useValidation from '../../hooks/useValidation';
 import { isValid } from '../../misc/isValid';
 import { setDOBError } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import { calculateAge } from '../../misc/calculateAge';
 const DobField = ({ handleUserInput, dob }) => {
   const [isAgeError, setIsAgeError] = useState(false);
   const { isEmpty, minLengthError } = useValidation(dob, {
@@ -12,24 +13,10 @@ const DobField = ({ handleUserInput, dob }) => {
   });
   const dispatch = useDispatch();
   const ageErrorText = 'Must be older than 18';
-  const calculateAge = (dob) => {
-    const birthdate = new Date(dob);
-    const today = new Date();
-    let age = today.getFullYear() - birthdate.getFullYear();
-    const m = today.getMonth() - birthdate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
-      age--;
-    }
-    return age;
-  };
 
   const validateAge = (e) => {
     const age = calculateAge(e.target.value);
-    if (age >= 18) {
-      setIsAgeError(false);
-    } else {
-      setIsAgeError(true);
-    }
+    setIsAgeError(age < 18);
   };
 
   useEffect(() => {
