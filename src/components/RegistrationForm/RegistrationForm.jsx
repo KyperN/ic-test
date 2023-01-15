@@ -100,8 +100,7 @@ const RegistrationForm = () => {
   );
 
   return (
-    <Container>
-      <Form className="w-25">
+      <Form className="container">
         <FirstNameField
           firstName={firstName}
           handleUserInput={handleUserInput}
@@ -129,7 +128,6 @@ const RegistrationForm = () => {
           Submit
         </Button>
       </Form>
-    </Container>
   );
 };
 
