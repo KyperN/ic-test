@@ -24,7 +24,7 @@ This is a React project that is used to build modern web applications. It includ
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/my-react-project.git
+git clone https://github.com/kypern/ic-test.git
 
 # 2. Install the dependencies
 npm install
