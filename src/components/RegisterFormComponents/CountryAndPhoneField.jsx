@@ -4,6 +4,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import FormError from './FormError';
 import { useDispatch } from 'react-redux';
+import { setPhoneError } from '../../redux/actions';
 const CountryAndPhoneField = ({ handlePhoneCountry }) => {
   const [error, setError] = useState(true);
   const dispatch = useDispatch();
@@ -13,15 +14,9 @@ const CountryAndPhoneField = ({ handlePhoneCountry }) => {
   };
   useEffect(() => {
     if (!error) {
-      dispatch({
-        type: 'PHONE_ERROR',
-        payload: false,
-      });
+      setPhoneError(dispatch, false);
     } else {
-      dispatch({
-        type: 'PHONE_ERROR',
-        payload: true,
-      });
+      setPhoneError(dispatch, true);
     }
   }, [error, dispatch]);
   return (

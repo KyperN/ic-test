@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import useValidation from '../../hooks/useValidation';
 import { isValid } from '../../misc/isValid';
+import { setDOBError } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 const DobField = ({ handleUserInput, dob }) => {
   const [isAgeError, setIsAgeError] = useState(false);
@@ -33,15 +34,9 @@ const DobField = ({ handleUserInput, dob }) => {
 
   useEffect(() => {
     if (!isEmpty && !minLengthError && !isAgeError) {
-      dispatch({
-        type: 'DOB_ERROR',
-        payload: false,
-      });
+      setDOBError(dispatch, false);
     } else {
-      dispatch({
-        type: 'DOB_ERROR',
-        payload: true,
-      });
+      setDOBError(dispatch, true);
     }
   }, [dob, isEmpty, minLengthError, isAgeError, dispatch]);
 

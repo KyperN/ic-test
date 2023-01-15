@@ -21,7 +21,7 @@ export const setDOBError = (dispatch, value) => {
     payload: value,
   });
 };
-export const setPHoneError = (dispatch, value) => {
+export const setPhoneError = (dispatch, value) => {
   dispatch({
     type: 'PHONE_ERROR',
     payload: value,
@@ -30,6 +30,17 @@ export const setPHoneError = (dispatch, value) => {
 export const setPasswordError = (dispatch, value) => {
   dispatch({
     type: 'PASSWORD_ERROR',
+    payload: value,
+  });
+};
+export const setAllErrorsTrue = (dispatch) => {
+  dispatch({
+    type: 'RESET_ERRORS',
+  });
+};
+export const handleSuccessLogin = (dispatch, value) => {
+  dispatch({
+    type: 'LOGIN',
     payload: value,
   });
 };

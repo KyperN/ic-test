@@ -15,7 +15,6 @@ const useValidation = (value, validations, pattern) => {
           break;
         }
         case 'isEmpty': {
-          console.log(value);
           value ? setIsEmpty(false) : setIsEmpty(true);
           break;
         }

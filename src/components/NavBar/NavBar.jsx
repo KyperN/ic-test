@@ -30,6 +30,13 @@ const NavBar = () => {
               Contact
             </Nav.Link>
           </NavItem>
+          {isAuth ? (
+            <NavItem>
+              <Nav.Link as={Link} to="/profile">
+                Profile
+              </Nav.Link>
+            </NavItem>
+          ) : null}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

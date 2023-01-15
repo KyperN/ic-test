@@ -3,7 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 const ItemCard = ({ title, description, id, premium = false }) => {
-  console.log(id);
   return (
     <div>
       <Card>

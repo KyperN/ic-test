@@ -16,16 +16,18 @@ export const formErrorReducer = (state = init, action) => {
     case 'LAST_NAME_ERROR':
       return { ...state, lastNameError: action.payload };
     case 'PASSWORD_ERROR': {
-      console.log(state);
       return { ...state, passwordError: action.payload };
     }
     case 'DOB_ERROR': {
-      console.log(state);
       return { ...state, dobError: action.payload };
     }
     case 'PHONE_ERROR': {
       console.log(state);
       return { ...state, phoneError: action.payload };
+    }
+    case 'RESET_ERRORS': {
+      console.log(state);
+      return { ...state, init };
     }
     default:
       return state;

@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap';
 import useValidation from '../../hooks/useValidation';
 import { isValid } from '../../misc/isValid';
 import { useDispatch } from 'react-redux';
+import { setLastNameError } from '../../redux/actions';
 const LastNameField = ({ handleUserInput, lastName }) => {
   const dispatch = useDispatch();
 
@@ -17,15 +18,9 @@ const LastNameField = ({ handleUserInput, lastName }) => {
   });
   useEffect(() => {
     if (!isEmpty && !minLengthError) {
-      dispatch({
-        type: 'LAST_NAME_ERROR',
-        payload: false,
-      });
+      setLastNameError(dispatch, false);
     } else {
-      dispatch({
-        type: 'LAST_NAME_ERROR',
-        payload: true,
-      });
+      setLastNameError(dispatch, true);
     }
   }, [lastName, isEmpty, minLengthError, dispatch]);
   return (

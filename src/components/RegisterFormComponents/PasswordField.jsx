@@ -4,14 +4,16 @@ import { isValid } from '../../misc/isValid';
 import useValidation from '../../hooks/useValidation';
 import { passwordPattern } from '../../misc/patterns';
 import { useEffect } from 'react';
+import { setPasswordError } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import usePatternError from '../../hooks/usePatterError';
 const PasswordField = ({
   password,
   handleUserInput,
   isForLogin = false,
   handleLoginPassword,
 }) => {
-  const [isPatternError, setIsPatternError] = useState(false);
+  const isPatternError = usePatternError(passwordPattern, password);
   const { isEmpty, minLengthError } = useValidation(password, {
     isEmpty: true,
     minLength: 8,
@@ -26,21 +28,14 @@ const PasswordField = ({
       handleLoginPassword(e, 'password');
     } else {
       handleUserInput(e);
-      setIsPatternError(!passwordPattern.test(e.target.value));
     }
   };
 
   useEffect(() => {
     if (!isEmpty && !minLengthError && !isPatternError) {
-      dispatch({
-        type: 'PASSWORD_ERROR',
-        payload: false,
-      });
+      setPasswordError(dispatch, false);
     } else {
-      dispatch({
-        type: 'PASSWORD_ERROR',
-        payload: true,
-      });
+      setPasswordError(dispatch, true);
     }
   }, [password, isEmpty, minLengthError, dispatch, isPatternError]);
   return (
@@ -56,7 +51,9 @@ const PasswordField = ({
         type="password"
         placeholder="Password"
       />
-      {isValid(isEmpty, minLengthError, isPatternError, passwordErrorText)}
+      {isForLogin
+        ? null
+        : isValid(isEmpty, minLengthError, isPatternError, passwordErrorText)}
     </Form.Group>
   );
 };
