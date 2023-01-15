@@ -8,10 +8,12 @@ This is a React project that is used to build modern web applications. It includ
 - Edit user personal data.
 - Logout user
 
-## Full requirments 
+## Full requirments
+
 <img width="642" alt="Screenshot 2023-01-15 at 9 29 36 PM" src="https://user-images.githubusercontent.com/79104505/212563214-4663cb5b-abb7-4eb3-a1fc-441efc35ac18.png">
 
 ## Technologies used
+
 - React
 - Redux
 - React-Bootstrap
@@ -31,3 +33,4 @@ npm start
 
 #4. Connect
 visit localhost:3000
+```
