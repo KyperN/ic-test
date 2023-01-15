@@ -9,7 +9,7 @@ This is a React project that is used to build modern web applications. It includ
 - Edit personal data
 - Logout
 
-Ful list of requirements :
+- Full list of requirements :
 <img width="642" alt="Screenshot 2023-01-15 at 9 29 36 PM" src="https://user-images.githubusercontent.com/79104505/212563499-ece15220-4c9a-4283-8112-1fc5edb68b84.png">
 
 
