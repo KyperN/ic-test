@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isAuth = useSelector((state) => state.user.isAuth);

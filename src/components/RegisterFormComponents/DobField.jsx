@@ -5,6 +5,7 @@ import { isValid } from '../../misc/isValid';
 import { setDOBError } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import { calculateAge } from '../../misc/calculateAge';
+
 const DobField = ({ handleUserInput, dob }) => {
   const [isAgeError, setIsAgeError] = useState(false);
   const { isEmpty, minLengthError } = useValidation(dob, {

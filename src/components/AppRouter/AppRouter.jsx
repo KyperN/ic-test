@@ -1,6 +1,5 @@
 import React from 'react';
 import ItemCards from '../ItemCards/ItemCards';
-import { Route, Routes } from 'react-router';
 import ItemInfo from '../ItemInfo/ItemInfo';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import LoginForm from '../LoginForm/LoginForm';
@@ -8,12 +7,15 @@ import PremiumSection from '../PremiumSection/PremiumSection';
 import Profile from '../Profile/Profile';
 import Contact from '../Contact/Contact';
 import Services from '../Services/Services';
+import { Route, Routes } from 'react-router';
+
+const products = require('../../misc/products.json');
+const regularProducts = products.filter((product) => !product.premium);
+
 const AppRouter = ({ isAuth, user }) => {
-  const products = require('../../misc/products.json');
-  const regularProducts = products.filter((product) => !product.premium);
   const paths = [
     {
-      path: '/home',
+      path: '/',
       element: <ItemCards items={regularProducts} />,
     },
     { path: '/services', element: <Services /> },

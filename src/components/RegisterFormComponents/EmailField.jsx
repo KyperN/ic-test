@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { Form } from 'react-bootstrap';
-import useValidation from '../../hooks/useValidation';
 import { isValid } from '../../misc/isValid';
 import { emailPattern } from '../../misc/patterns';
 import { useDispatch } from 'react-redux';
 import { setEmailError } from '../../redux/actions';
 import usePatternError from '../../hooks/usePatternError';
+import useValidation from '../../hooks/useValidation';
+
 const EmailField = ({
   email,
   handleUserInput,
@@ -18,6 +19,7 @@ const EmailField = ({
     minLength: 3,
   });
   const dispatch = useDispatch();
+
   const handleChange = (e) => {
     if (isForLogin) {
       handleLoginEmail(e, 'email');

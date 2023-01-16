@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setPhoneError } from '../../redux/actions';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import FormError from './FormError';
-import { useDispatch } from 'react-redux';
-import { setPhoneError } from '../../redux/actions';
+
 const CountryAndPhoneField = ({ handlePhoneCountry }) => {
   const [error, setError] = useState(true);
   const dispatch = useDispatch();

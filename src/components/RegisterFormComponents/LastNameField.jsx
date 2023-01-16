@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import useValidation from '../../hooks/useValidation';
-import { isValid } from '../../misc/isValid';
 import { useDispatch } from 'react-redux';
 import { setLastNameError } from '../../redux/actions';
+import { isValid } from '../../misc/isValid';
+
 const LastNameField = ({ handleUserInput, lastName }) => {
   const dispatch = useDispatch();
 

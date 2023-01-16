@@ -3,8 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ItemCard from '../ItemCard/ItemCard';
+
 const ItemCards = ({ items }) => {
-  console.log(items);
   const products = items.map(({ title, description, img, id }) => {
     return (
       <Col key={id} xs={4}>

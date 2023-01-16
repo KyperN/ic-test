@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import EmailField from '../RegisterFormComponents/EmailField';
 import PasswordField from '../RegisterFormComponents/PasswordField';
 import { Button, Container } from 'react-bootstrap';
 import Alert from 'react-bootstrap/Alert';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { handleSuccessLogin } from '../../redux/actions';
+
+const users = require('../../misc/users.json');
 
 const LoginForm = () => {
   const [credentials, setCredentials] = useState({
@@ -16,7 +18,6 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const { email, password } = credentials;
-  const users = require('../../misc/users.json');
 
   const handleLoginInput = (e, type) => {
     if (type === 'email') {

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, FormControl, Button } from 'react-bootstrap';
-import { updateUserById } from '../../misc/updateUserData';
 import useValidation from '../../hooks/useValidation';
 import { updateField } from '../../redux/actions';
 import usePatternError from '../../hooks/usePatternError';
 import { passwordPattern } from '../../misc/patterns';
+import { updateUserById } from '../../misc/updateUserData';
+
+const users = require('../../misc/users.json');
+
 const EditFormField = ({ field, value, userId, minLength, label }) => {
-  const users = require('../../misc/users.json');
   const [editMode, setEditMode] = useState(false);
   const [fieldValue, setFieldValue] = useState(value);
   const dispatch = useDispatch();

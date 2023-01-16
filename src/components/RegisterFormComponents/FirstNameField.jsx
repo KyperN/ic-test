@@ -4,12 +4,14 @@ import useValidation from '../../hooks/useValidation';
 import { isValid } from '../../misc/isValid';
 import { useDispatch } from 'react-redux';
 import { setFirstNameError } from '../../redux/actions';
+
 const FirstNameField = ({ firstName, handleUserInput }) => {
   const dispatch = useDispatch();
   const { isEmpty, minLengthError } = useValidation(firstName, {
     isEmpty: true,
     minLength: 1,
   });
+
   const formatInput = (e) => {
     e.target.value = e.target.value.replace(/\d+/g, '');
     handleUserInput(e);

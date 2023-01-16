@@ -4,9 +4,13 @@ import { isValid } from '../../misc/isValid';
 import useValidation from '../../hooks/useValidation';
 import { passwordPattern } from '../../misc/patterns';
 import { useEffect } from 'react';
-import { setPasswordError } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import usePatternError from '../../hooks/usePatternError';
+import { setPasswordError } from '../../redux/actions';
+
+const passwordErrorText =
+  'Your password should contain atleast: 1 Uppercase, 1 Lowercase, 1 digit and special character and be longer than 8';
+
 const PasswordField = ({
   password,
   handleUserInput,
@@ -18,10 +22,7 @@ const PasswordField = ({
     isEmpty: true,
     minLength: 8,
   });
-
   const dispatch = useDispatch();
-  const passwordErrorText =
-    'Your password should contain atleast: 1 Uppercase, 1 Lowercase, 1 digit and special character and be longer than 8';
 
   const handleChange = (e) => {
     if (isForLogin) {

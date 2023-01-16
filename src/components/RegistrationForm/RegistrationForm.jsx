@@ -1,20 +1,20 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
-import 'react-phone-number-input/style.css';
+import { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
 import EmailField from '../RegisterFormComponents/EmailField';
 import PasswordField from '../RegisterFormComponents/PasswordField';
 import CountryAndPhoneField from '../RegisterFormComponents/CountryAndPhoneField';
-import DobField from '../RegisterFormComponents/DobField';
-import { useNavigate } from 'react-router';
-import { useSelector } from 'react-redux';
 import FirstNameField from '../RegisterFormComponents/FirstNameField';
 import LastNameField from '../RegisterFormComponents/LastNameField';
+import DobField from '../RegisterFormComponents/DobField';
+import 'react-phone-number-input/style.css';
 import { setAllErrorsTrue } from '../../redux/actions';
-import { useDispatch } from 'react-redux';
-import { useMemo } from 'react';
+
+const users = require('../../misc/users.json');
+
 const RegistrationForm = () => {
   const [registrationData, setRegistrationData] = useState({
     firstName: '',
@@ -40,7 +40,7 @@ const RegistrationForm = () => {
 
   const { firstName, lastName, email, dob, password, agreed } =
     registrationData;
-  const users = require('../../misc/users.json');
+
   const handleUserInput = (e) => {
     setRegistrationData((prev) => ({
       ...prev,
@@ -48,6 +48,7 @@ const RegistrationForm = () => {
         e.target.type === 'checkbox' ? e.target.checked : e.target.value,
     }));
   };
+
   const handlePhoneCountry = (phone, country) => {
     setRegistrationData((prev) => ({
       ...prev,
@@ -100,34 +101,31 @@ const RegistrationForm = () => {
   );
 
   return (
-      <Form className="container">
-        <FirstNameField
-          firstName={firstName}
-          handleUserInput={handleUserInput}
+    <Form className="container">
+      <FirstNameField firstName={firstName} handleUserInput={handleUserInput} />
+      <LastNameField lastName={lastName} handleUserInput={handleUserInput} />
+      <EmailField email={email} handleUserInput={handleUserInput} />
+      <PasswordField password={password} handleUserInput={handleUserInput} />
+      <CountryAndPhoneField handlePhoneCountry={handlePhoneCountry} />
+      <DobField handleUserInput={handleUserInput} dob={dob} />
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check
+          onChange={(e) => {
+            handleUserInput(e);
+          }}
+          type="checkbox"
+          label="I accept terms"
+          name="agreed"
         />
-        <LastNameField lastName={lastName} handleUserInput={handleUserInput} />
-        <EmailField email={email} handleUserInput={handleUserInput} />
-        <PasswordField password={password} handleUserInput={handleUserInput} />
-        <CountryAndPhoneField handlePhoneCountry={handlePhoneCountry} />
-        <DobField handleUserInput={handleUserInput} dob={dob} />
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check
-            onChange={(e) => {
-              handleUserInput(e);
-            }}
-            type="checkbox"
-            label="I accept terms"
-            name="agreed"
-          />
-        </Form.Group>
-        <Button
-          disabled={!isFormValid}
-          onClick={handleSubmit}
-          variant="primary"
-          type="submit">
-          Submit
-        </Button>
-      </Form>
+      </Form.Group>
+      <Button
+        disabled={!isFormValid}
+        onClick={handleSubmit}
+        variant="primary"
+        type="submit">
+        Submit
+      </Button>
+    </Form>
   );
 };
 

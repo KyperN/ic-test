@@ -2,11 +2,12 @@ import React from 'react';
 import ItemCard from '../ItemCard/ItemCard';
 import { useParams } from 'react-router';
 
+const products = require('../../misc/products.json');
+
 const ItemInfo = () => {
   const { id } = useParams();
-  const products = require('../../misc/products.json');
-  const product = products.filter((product) => product.id === id);
-  const { title, description } = product[0];
+  const product = products.find((product) => product.id === id);
+  const { title, description } = product;
   return (
     <div className="d-flex justify-content-center mt-50">
       <ItemCard

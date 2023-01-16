@@ -1,10 +1,13 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Button, FormControl } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import FormError from '../RegisterFormComponents/FormError';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { updateUserById } from '../../misc/updateUserData';
-import { useDispatch } from 'react-redux';
-import FormError from '../RegisterFormComponents/FormError';
+
+const users = require('../../misc/users.json');
+
 const EditPhoneCountryField = ({ initialCountry, initialPhone, userId }) => {
   const [editMode, setEditMode] = useState(false);
   const [error, setError] = useState(false);
@@ -14,7 +17,6 @@ const EditPhoneCountryField = ({ initialCountry, initialPhone, userId }) => {
     country: initialCountry,
   });
   const { phone, country } = formData;
-  const users = require('../../misc/users.json');
 
   const handleChange = (phone, country) => {
     setError(phone.length <= 8);

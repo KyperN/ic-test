@@ -1,11 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import useValidation from '../../hooks/useValidation';
-import { isValid } from '../../misc/isValid';
+import React, { useEffect, useState } from 'react';
 import { setDOBError, updateField } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import useValidation from '../../hooks/useValidation';
+import { isValid } from '../../misc/isValid';
+import { Button, Form } from 'react-bootstrap';
 import { calculateAge } from '../../misc/calculateAge';
 import { updateUserById } from '../../misc/updateUserData';
+
+const users = require('../../misc/users.json');
+const ageErrorText = 'Must be older than 18';
+
 const EditDobField = ({ initialDob, userId }) => {
   const [newDob, setNewDob] = useState(initialDob);
   const [editMode, setEditMode] = useState(false);
@@ -14,14 +18,12 @@ const EditDobField = ({ initialDob, userId }) => {
     isEmpty: false,
     minLength: 6,
   });
-  const users = require('../../misc/users.json');
-
   const dispatch = useDispatch();
-  const ageErrorText = 'Must be older than 18';
 
   const handleInput = (e) => {
     setNewDob(e.target.value);
   };
+
   const validateAge = (e) => {
     const age = calculateAge(e.target.value);
     setIsAgeError(age < 18);
